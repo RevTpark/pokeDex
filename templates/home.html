@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+PokeDex
+{% endblock %}
+
+{% block content %}
+<div class="pokedex-container">
+    {% for pokemon in data %}
+    {% if pokemon.image %}
+        <div class="poke-card">
+            <div class="poke-image"><img src="{{ pokemon.image }}" alt="{{ pokemon.name }} Image"></div>
+            <div class="poke-name">{{ pokemon.name }}</div>
+            <div class="poke-type-container">
+                <div class="{{ pokemon.primary_type.lower() }}-type">
+                    {{ pokemon.primary_type }}
+                </div>
+                {% if pokemon.secondary_type %}
+                <div class="{{pokemon.secondary_type.lower() }}-type">
+                    {{ pokemon.secondary_type }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
