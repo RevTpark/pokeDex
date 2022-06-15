@@ -1,4 +1,4 @@
-pokemon_types = {'Electric', 'Water', 'Psychic', 'Bug', 'Poison', 'Ghost', 'Fire', 'Fairy', 'Ground', 'Ice', 'Dragon', 'Grass', 'Flying', 'Normal', 'Rock', 'Dark', 'Steel', 'Fighting'}
+pokemon_types = ['Electric', 'Water', 'Psychic', 'Bug', 'Poison', 'Ghost', 'Fire', 'Fairy', 'Ground', 'Ice', 'Dragon', 'Grass', 'Flying', 'Normal', 'Rock', 'Dark', 'Steel', 'Fighting']
 
 
 poke_data = {'bulbasaur': 'https://projectpokemon.org/images/normal-sprite/bulbasaur.gif',

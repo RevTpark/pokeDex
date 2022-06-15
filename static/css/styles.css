@@ -4,6 +4,25 @@ body{
     background-color: rgba(173, 216, 230, 0.598);
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #00000015; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 .hide {
     opacity: 0;
     display: none !important;
@@ -72,6 +91,38 @@ body{
     background-color: lightblue;
     display: flex;
     flex-wrap: wrap;
+}
+
+.search-poke-container{
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+}
+
+.search-field{
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    width: 70%;
+    background-color: rgba(135, 207, 235);
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.search-field:focus{
+    outline: none;
+    border: 2px rgb(1, 213, 255) solid;
+}
+
+.title-container{
+    background-color: lightblue;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.only-type-container{
+    margin: 5px 10px 10px 20px;
 }
 
 .poke-card{
@@ -197,6 +248,12 @@ body{
     background-color: rgba(210, 59, 210, 0.5);
     border: 2px rgba(210, 59, 210) solid;
     color: rgb(114, 54, 114);
+}
+
+.dark-type{
+    background-color: rgba(62, 62, 62, 0.5);
+    border: 2px rgba(62, 62, 62) solid;
+    color: black;
 }
 
 .dragon-type{

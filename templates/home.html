@@ -4,7 +4,10 @@
 PokeDex
 {% endblock %}
 
-{% block content %}
+{% block content %} 
+<div class="search-poke-container">
+        <input type="text" name="searchPokemon" id="searchPokemon" class="search-field" onkeyup="handleSearch()">
+</div>
 <div class="pokedex-container">
     {% for pokemon in data %}
     {% if pokemon.image %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Pokemon Types{% endblock %}
+
+{% block content %}
+<div class="title-container">
+    <img src="https://fontmeme.com/permalink/220615/50f433df3c7351f2095d51da4f2dad8a.png" alt="pokemon-font" border="0">
+</div>
+<div class="pokedex-container">   
+    {% for types in unused %}
+    <div class="only-type-container">
+        <div class="poke-type-container">
+            <div class="{{ types[0].lower() }}-type">
+                {{ types[0] }}
+            </div>
+            <div class="{{types[1].lower() }}-type">
+                {{ types[1] }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

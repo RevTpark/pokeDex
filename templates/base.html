@@ -6,22 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}" type="text/css">
+    <script src="{{ url_for('static', filename='js/loading.js')}}"></script>
     <script src="{{ url_for('static', filename='js/main.js')}}"></script>
 </head>
 <body>
+    <!-- Loader Screen -->
     <div class="loading-bg"></div>
     <div class="loader" id="loader">
         <div class="loader-top-dex">
             <img src="{{url_for('static',filename='images/pokedex/dex_header.png')}}" width="100%" height="auto"></img>
         </div>
-        <div class="loader-pokeball">
-            <!-- <img src="{{url_for('static',filename='images/pokedex/pokeball.png')}}" width="70%"></img> -->
-        </div>
+        <div class="loader-pokeball"></div>
         <div class="loader-bottom-dex">
             <img src="{{url_for('static',filename='images/pokedex/dex_footer.png')}}" width="100%" height="auto"></img>
         </div>
     </div>
-    <div style="text-align: center;"><img src="https://fontmeme.com/permalink/220612/7bbb60fb4fb7570eb56c7c884bd45176.png" alt="pokemon-font" border="0"></div>
+    <div style="text-align: center;">
+        <a href="{{ url_for('home') }}">
+            <img src="https://fontmeme.com/permalink/220612/7bbb60fb4fb7570eb56c7c884bd45176.png" alt="pokemon-font" border="0">
+        </a>
+    </div>
     <img src="{{url_for('static',filename='images/pokedex/dex_header.png')}}" width="100%" height="auto"></img>
     {% block content %}
     {% endblock %}
