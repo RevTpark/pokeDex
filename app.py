@@ -13,7 +13,7 @@ from models import Pokemon
 @app.route("/")
 def home():
     data = Pokemon.query.filter(Pokemon.dex_id < 152).all()
-    return render_template('home.html', data=data)
+    return render_template('home.html', data=data, types=pokemon_types)
 
 @app.route("/types")
 def type_classification():

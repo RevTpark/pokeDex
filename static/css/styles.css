@@ -100,6 +100,40 @@ body{
     padding: 10px 0px 0px 0px;
 }
 
+.serach-toggle-btn{
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    padding: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-btn-name{
+    background-color: rgba(255, 217, 0, 0.5);
+    border: 2px gold solid;
+    color: blue;
+}
+
+.search-btn-type{
+    background-color: rgba(0, 0, 255, 0.5);
+    border: 2px blue solid;
+    color: yellow;
+}
+
+.type-selector{
+    padding: 5px;
+    border: none;
+    background-color: lightseagreen;
+    font-size: 15px;
+    color: white;
+}
+
+.type-selector:focus{
+    outline: none;
+    border: none;
+}
+
 .search-field{
     font-size: 18px;
     font-family: 'Poppins', sans-serif;

@@ -6,7 +6,19 @@ PokeDex
 
 {% block content %} 
 <div class="search-poke-container">
+        <button id="changeSerachType" onclick="handleSearchTypeToggle()" class="serach-toggle-btn search-btn-name">Name</button>
         <input type="text" name="searchPokemon" id="searchPokemon" class="search-field" onkeyup="handleSearch()">
+        <select name="type1" id="type1" onchange="handleTypeSearch()" style="display: none;" class="type-selector">
+            {% for type1 in types %}
+                <option value="{{ type1 }}">{{ type1 }}</option>
+            {% endfor %}
+        </select>
+        <select name="type2" id="type2" onchange="handleTypeSearch()" style="display: none;" class="type-selector">
+            <option value="None">None</option>
+            {% for type1 in types %}
+                <option value="{{ type1 }}">{{ type1 }}</option>
+            {% endfor %}
+        </select>
 </div>
 <div class="pokedex-container">
     {% for pokemon in data %}
