@@ -6,24 +6,6 @@
     <img src="https://fontmeme.com/permalink/220619/e69924852730202474f45f4656932014.png" alt="pokemon-font" border="0">
 </div>
 <div class="guess-container">
-    {% if pokemon %}
-    <div class="poke-card">
-        {% if pokemon.image %}
-        <div class="poke-image"><img src="{{ pokemon.image }}" alt="{{ pokemon.name }} Image"></div>
-        {% endif %}
-        <div class="poke-name">It is {{ 'an' if pokemon.name[0] in ['A', 'E', 'I', 'O', 'U'] else 'a'}} {{ pokemon.name }}!!</div>
-        <div class="poke-type-container">
-            <div class="{{ pokemon.primary_type.lower() }}-type">
-                {{ pokemon.primary_type }}
-            </div>
-            {% if pokemon.secondary_type %}
-            <div class="{{pokemon.secondary_type.lower() }}-type">
-                {{ pokemon.secondary_type }}
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    {% endif %}
     <form method="POST" enctype="multipart/form-data">
         <div class="upload-btn-wrapper">
             <button class="btn">Upload</button>
@@ -49,6 +31,25 @@
             <input type="submit" class="btn-submit">
         </div>
     </form>
+
+    {% if pokemon %}
+    <div class="poke-card">
+        {% if pokemon.image %}
+        <div class="poke-image"><img src="{{ pokemon.image }}" alt="{{ pokemon.name }} Image"></div>
+        {% endif %}
+        <div class="poke-name">{{ pokemon.name }}</div>
+        <div class="poke-type-container">
+            <div class="{{ pokemon.primary_type.lower() }}-type">
+                {{ pokemon.primary_type }}
+            </div>
+            {% if pokemon.secondary_type %}
+            <div class="{{pokemon.secondary_type.lower() }}-type">
+                {{ pokemon.secondary_type }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
