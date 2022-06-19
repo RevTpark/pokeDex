@@ -121,6 +121,59 @@ body{
     color: yellow;
 }
 
+.guess-container{
+    padding: 10px 10px 10px 10px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+
+.guess-submit{
+    margin: 10px;
+}
+
+.btn-submit{
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+  
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.or-style{
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.contentarea{
+    margin: 10px;
+}
+
 .type-selector{
     padding: 5px;
     border: none;

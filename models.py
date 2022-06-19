@@ -3,8 +3,7 @@ import click
 from flask.cli import with_appcontext
 import requests
 from bs4 import BeautifulSoup
-from flask import url_for
-import os
+
 
 class Pokemon(db.Model):
 

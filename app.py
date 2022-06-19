@@ -1,11 +1,15 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from decouple import config
 from constants import pokemon_types
+import os
+from utils import allowed_file, predict_pokemon
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = config("SQL_DATABASE_URI")
 app.config["SECRET_KEY"] = config("SECRET_KEY")
+app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
 
 from models import Pokemon
@@ -28,6 +32,23 @@ def type_classification():
             used_types.add((pokemon.secondary_type, pokemon.primary_type))
     unused = all_types.difference(used_types)
     return render_template('types.html', unused=unused)
+
+@app.route("/guess-pokemon", methods=["GET", "POST"])
+def guess_pokemon():
+    if request.method == 'POST':
+        file = request.files['file']
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            output = predict_pokemon(file_path)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+            pokemon = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
+            return render_template('guess_pokemon.html', pokemon=pokemon)
+
+    return render_template("guess_pokemon.html")
 
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
