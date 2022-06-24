@@ -86,6 +86,22 @@ body{
     }
 }
 
+.nav-bar{
+    margin: 20px;
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-bar > a {
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px blue solid;
+    padding: 8px;
+    background-color: gold;
+    color: black;
+    margin-right: 10px;
+}
+
 .pokedex-container{
     padding: 10px 10px 10px 10px;
     background-color: lightblue;
