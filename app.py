@@ -31,7 +31,7 @@ def type_classification():
             used_types.add((pokemon.primary_type, pokemon.secondary_type)) 
             used_types.add((pokemon.secondary_type, pokemon.primary_type))
     unused = all_types.difference(used_types)
-    return render_template('types.html', unused=unused)
+    return render_template('types.html', unused=unused, types=pokemon_types)
 
 @app.route("/guess-pokemon", methods=["GET", "POST"])
 def guess_pokemon():

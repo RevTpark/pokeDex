@@ -4,9 +4,21 @@
 
 {% block content %}
 <div class="title-container">
+    <img src="https://fontmeme.com/permalink/220624/c0ce03dfd628bb22246ba7dcc2bf9cde.png" alt="pokemon-font" border="0">
+</div>
+<div class="pokedex-container" style="justify-content: center;">
+    {% for type in types %} 
+        <div class="poke-type-container" style="margin-right: 10px;">
+            <div class="{{ type.lower() }}-type">
+                {{ type }}
+            </div>
+        </div>
+    {% endfor %} 
+</div>
+<div class="title-container">
     <img src="https://fontmeme.com/permalink/220615/50f433df3c7351f2095d51da4f2dad8a.png" alt="pokemon-font" border="0">
 </div>
-<div class="pokedex-container">   
+<div class="pokedex-container">
     {% for types in unused %}
     <div class="only-type-container">
         <div class="poke-type-container">
