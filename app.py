@@ -5,6 +5,7 @@ from constants import pokemon_types
 import os
 from utils import allowed_file, predict_pokemon
 from werkzeug.utils import secure_filename
+from flask_restful import Api
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = config("SQL_DATABASE_URI")
@@ -53,6 +54,13 @@ def guess_pokemon():
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
 app.cli.add_command(seed_pokemon_data)
+
+from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, SearchPokemonByName, SearchPokemonByType
+api = Api(app, prefix="/api")
+api.add_resource(GetPokemonDetailsAPI, "/pokemon/<string:name>")
+api.add_resource(GetAllPokemonBasicAPI, "/pokemon/all")
+api.add_resource(SearchPokemonByName, "/search/<string:name>")
+api.add_resource(SearchPokemonByType, "/search")
 
 if __name__ == "__main__":
     app.run()
