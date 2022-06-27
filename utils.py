@@ -1,5 +1,5 @@
 from flask import url_for
-from constants import class_names, ALLOWED_EXTENSIONS
+from constants import class_names, ALLOWED_EXTENSIONS, mapping
 import numpy as np
 import keras
 import tensorflow as tf
@@ -7,7 +7,11 @@ import pathlib
 import PIL
 
 def load_model():
-    model = keras.models.load_model("." + url_for('static', filename='model'))
+    model = keras.models.load_model("." + url_for('static', filename='models/pic_model'))
+    return model
+
+def load_text_model():
+    model = keras.models.load_model("https://drive.google.com/drive/folders/1eCxkiS5zJSWRolYIO4ZzL2W3_lqNg8mj?usp=sharing", custom_objects={'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy")})
     return model
 
 def predict_pokemon(filepath):
@@ -25,6 +29,16 @@ def predict_pokemon(filepath):
     predictions = model.predict(img_array)
     score = tf.nn.softmax(predictions[0])
     guess = class_names[np.argmax(score)]
+    return guess
+
+def get_value(val):
+  for k, v in mapping.items():
+    if v == val:
+      return k
+
+def predict_text_pokemon(text):
+    model = load_text_model()
+    guess = get_value(np.argmax(model.predict(text)))
     return guess
 
 def allowed_file(filename):

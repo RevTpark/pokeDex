@@ -2,6 +2,9 @@ from flask_restful import Resource
 from flask import request
 from models import Pokemon
 from schema import TypeQueryScehma
+from utils import allowed_file, predict_pokemon
+from werkzeug.utils import secure_filename
+import os
 
 class GetPokemonDetailsAPI(Resource):
 
@@ -101,3 +104,31 @@ class SearchPokemonByType(Resource):
             })
         return res, 200
 
+
+class PredictPokemonWithImage(Resource):
+
+    def post(self):
+        from app import app
+
+        file = request.files['image']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            output = predict_pokemon(file_path)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+            poke = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
+            res = {
+                "dex_id": poke.dex_id,
+                "name": poke.name,
+                "image": poke.image,
+                "primary_type": poke.primary_type,
+                "secondary_type": poke.secondary_type,
+                "is_mega": poke.is_mega,
+            }
+            return res, 200
+            
+        return {
+            "error": "Wrong file type"
+        }, 400

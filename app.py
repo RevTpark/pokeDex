@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from decouple import config
 from constants import pokemon_types
 import os
-from utils import allowed_file, predict_pokemon
+from utils import allowed_file, predict_pokemon, predict_text_pokemon
 from werkzeug.utils import secure_filename
 from flask_restful import Api
 
@@ -51,16 +51,24 @@ def guess_pokemon():
 
     return render_template("guess_pokemon.html")
 
+
+@app.route("/guess-text-pokemon", methods=["GET", "POST"])
+def guess_text_pokemon():
+    print(predict_text_pokemon("It is small and yellow"))
+    return "ok"
+
+
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
 app.cli.add_command(seed_pokemon_data)
 
-from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, SearchPokemonByName, SearchPokemonByType
+from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, PredictPokemonWithImage, SearchPokemonByName, SearchPokemonByType
 api = Api(app, prefix="/api")
 api.add_resource(GetPokemonDetailsAPI, "/pokemon/<string:name>")
 api.add_resource(GetAllPokemonBasicAPI, "/pokemon/all")
 api.add_resource(SearchPokemonByName, "/search/<string:name>")
 api.add_resource(SearchPokemonByType, "/search")
+api.add_resource(PredictPokemonWithImage, "/predict")
 
 if __name__ == "__main__":
     app.run()
