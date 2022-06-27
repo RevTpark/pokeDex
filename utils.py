@@ -10,8 +10,23 @@ def load_model():
     model = keras.models.load_model("." + url_for('static', filename='models/pic_model'))
     return model
 
+def balanced_recall(y_true, y_pred):
+    return 1
+    
+def balanced_precision(y_true, y_pred):
+    return 1
+
+def balanced_f1_score(y_true, y_pred):
+    return 1
+
 def load_text_model():
-    model = keras.models.load_model("." + url_for('static', filename='models/text_model'), custom_objects={'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy")})
+    model = keras.models.load_model("." + url_for('static', filename='models/text_model'), 
+            custom_objects={
+                'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy"),
+                "balanced_recall": balanced_recall,
+                "balanced_precision": balanced_precision,
+                "balanced_f1_score": balanced_f1_score
+                })
     return model
 
 def predict_pokemon(filepath):
