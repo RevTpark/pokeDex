@@ -11,7 +11,7 @@ def load_model():
     return model
 
 def load_text_model():
-    model = keras.models.load_model("https://drive.google.com/drive/folders/1eCxkiS5zJSWRolYIO4ZzL2W3_lqNg8mj?usp=sharing", custom_objects={'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy")})
+    model = keras.models.load_model("." + url_for('static', filename='models/text_model'), custom_objects={'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy")})
     return model
 
 def predict_pokemon(filepath):
