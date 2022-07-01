@@ -14,6 +14,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
 
 from models import Pokemon
+from forms import AlgorithmForm
 
 @app.route("/")
 def home():
@@ -62,9 +63,13 @@ def guess_text_pokemon():
     return render_template("guess_text_pokemon.html")
 
 
-# @app.route("/trying", methods=['GET', 'POST'])
-# def trying():
-#     return render_template('test.html')
+@app.route("/trying", methods=['GET', 'POST'])
+def trying():
+    form = AlgorithmForm()
+    placeholder = Pokemon.query.get(1).image
+    if form.validate_on_submit():
+        print(form.data)
+    return render_template('test.html', form=form, placeholder=placeholder)
 
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
@@ -72,7 +77,7 @@ app.cli.add_command(seed_pokemon_data)
 
 from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, PredictPokemonWithImage, SearchPokemonByName, SearchPokemonByType
 api = Api(app, prefix="/api")
-api.add_resource(GetPokemonDetailsAPI, "/pokemon/<string:name>")
+api.add_resource(GetPokemonDetailsAPI, "/pokemon/<int:id>")
 api.add_resource(GetAllPokemonBasicAPI, "/pokemon/all")
 api.add_resource(SearchPokemonByName, "/search/<string:name>")
 api.add_resource(SearchPokemonByType, "/search")

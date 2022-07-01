@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+TRying
+{% endblock %}
+
+{% block content %}
+<div class="algo-backdrop">
+    <form method="POST" style="text-align: center;">
+        {{form.hidden_tag()}}
+        <div class="algo-form">
+            {% for field in form %}
+                {% if field.id != 'csrf_token' %}
+                    <div>
+                        <img src="{{ placeholder }}" id="img-{{ field.id }}" width="25%">
+                        {{ field(class='select2-selector') }}
+                        <br>
+                        {{ field.label() }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <input type="submit" class="btn-submit">
+    </form>
+</div>
+<script>
+    $(document).ready(()=>{
+
+        $('.select2-selector').on('change', function(e){
+            e.preventDefault();
+            var getter_id = $(this)[0].id;
+            $.ajax({
+                url: "/api/pokemon/"+$(this).val(),
+                type: "GET",
+                success: function(data){
+                    // console.log(getter_id);
+                    $("#img-"+getter_id).attr(
+                        'src',
+                        data['image']
+                    );
+                }
+            })
+        })
+    })
+</script>
+
+{% endblock %}

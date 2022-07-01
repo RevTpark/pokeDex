@@ -8,11 +8,12 @@ import os
 
 class GetPokemonDetailsAPI(Resource):
 
-    def get(self, name):
-        poke = Pokemon.query.filter(Pokemon.name.ilike(f"%{name}%")).first()
+    def get(self, id):
+        poke = Pokemon.query.get(id)
         if not poke:
             return {}, 404
         res = {
+            "id": poke.id,
             "dex_id": poke.dex_id,
             "name": poke.name,
             "image": poke.image,
@@ -31,6 +32,7 @@ class GetAllPokemonBasicAPI(Resource):
         res = []
         for poke in pokemon_list:
             res.append({
+                "id": poke.id,
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
@@ -49,6 +51,7 @@ class SearchPokemonByName(Resource):
         res = []
         for poke in pokemon_list:
             res.append({
+                "id": poke.id,
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
@@ -76,6 +79,7 @@ class SearchPokemonByType(Resource):
             res = []
             for poke in pokemon_list:
                 res.append({
+                    "id": poke.id,
                     "dex_id": poke.dex_id,
                     "name": poke.name,
                     "image": poke.image,
@@ -99,6 +103,7 @@ class SearchPokemonByType(Resource):
         res = []
         for poke in pokemon_list:
             res.append({
+                "id": poke.id,
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
@@ -125,6 +130,7 @@ class PredictPokemonWithImage(Resource):
                 os.remove(file_path)
             poke = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
             res = {
+                "id": poke.id,
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
