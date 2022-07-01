@@ -3,6 +3,7 @@ from constants import class_names, ALLOWED_EXTENSIONS, mapping
 import numpy as np
 import keras
 import tensorflow as tf
+import tensorflow_text 
 import pathlib
 import PIL
 
@@ -10,23 +11,8 @@ def load_model():
     model = keras.models.load_model("." + url_for('static', filename='models/pic_model'))
     return model
 
-def balanced_recall(y_true, y_pred):
-    return 1
-    
-def balanced_precision(y_true, y_pred):
-    return 1
-
-def balanced_f1_score(y_true, y_pred):
-    return 1
-
 def load_text_model():
-    model = keras.models.load_model("." + url_for('static', filename='models/text_model'), 
-            custom_objects={
-                'CategoricalAccuracy': tf.keras.metrics.CategoricalAccuracy(name="accuracy"),
-                "balanced_recall": balanced_recall,
-                "balanced_precision": balanced_precision,
-                "balanced_f1_score": balanced_f1_score
-                })
+    model = keras.models.load_model("." + url_for('static', filename='models/text_model'), )
     return model
 
 def predict_pokemon(filepath):

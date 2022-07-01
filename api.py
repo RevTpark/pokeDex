@@ -17,6 +17,7 @@ class GetPokemonDetailsAPI(Resource):
             "name": poke.name,
             "image": poke.image,
             "primary_type": poke.primary_type,
+            "description": poke.description,
             "secondary_type": poke.secondary_type,
             "is_mega": poke.is_mega,
         }
@@ -34,6 +35,7 @@ class GetAllPokemonBasicAPI(Resource):
                 "name": poke.name,
                 "image": poke.image,
                 "primary_type": poke.primary_type,
+                "description": poke.description,
                 "secondary_type": poke.secondary_type,
                 "is_mega": poke.is_mega,
             })
@@ -51,6 +53,7 @@ class SearchPokemonByName(Resource):
                 "name": poke.name,
                 "image": poke.image,
                 "primary_type": poke.primary_type,
+                "description": poke.description,
                 "secondary_type": poke.secondary_type,
                 "is_mega": poke.is_mega,
             })
@@ -76,6 +79,7 @@ class SearchPokemonByType(Resource):
                     "dex_id": poke.dex_id,
                     "name": poke.name,
                     "image": poke.image,
+                    "description": poke.description,
                     "primary_type": poke.primary_type,
                     "secondary_type": poke.secondary_type,
                     "is_mega": poke.is_mega,
@@ -98,6 +102,7 @@ class SearchPokemonByType(Resource):
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
+                "description": poke.description,
                 "primary_type": poke.primary_type,
                 "secondary_type": poke.secondary_type,
                 "is_mega": poke.is_mega,
@@ -123,6 +128,7 @@ class PredictPokemonWithImage(Resource):
                 "dex_id": poke.dex_id,
                 "name": poke.name,
                 "image": poke.image,
+                "description": poke.description,
                 "primary_type": poke.primary_type,
                 "secondary_type": poke.secondary_type,
                 "is_mega": poke.is_mega,

@@ -54,9 +54,17 @@ def guess_pokemon():
 
 @app.route("/guess-text-pokemon", methods=["GET", "POST"])
 def guess_text_pokemon():
-    print(predict_text_pokemon("It is small and yellow"))
-    return "ok"
+    if request.method == "POST":
+        description = request.form['description']
+        output = predict_text_pokemon([description])
+        pokemon = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
+        return render_template("guess_text_pokemon.html", pokemon=pokemon)
+    return render_template("guess_text_pokemon.html")
 
+
+# @app.route("/trying", methods=['GET', 'POST'])
+# def trying():
+#     return render_template('test.html')
 
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)

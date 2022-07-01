@@ -213,9 +213,19 @@ body{
     padding: 5px;
 }
 
-.search-field:focus{
+.description-field{
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    width: 70%;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.description-field:focus{
     outline: none;
-    border: 2px rgb(1, 213, 255) solid;
+    border: 2px whitesmoke solid;
 }
 
 .title-container{

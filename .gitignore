@@ -3,3 +3,5 @@ venv
 .env
 __pycache__
 static/models/text_model
+pokebase.csv
+typebase.csv
