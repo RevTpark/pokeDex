@@ -1,4 +1,4 @@
-import numpy
+import json
 from app import db
 import click
 from flask.cli import with_appcontext
@@ -49,8 +49,8 @@ def seed_pokemon_data():
     for idx, row in df.iterrows():
         new_type = Types(
             name=row['name'],
-            attack=row['attack'],
-            defense=row['defense']
+            attack=json.loads(row['attack'].replace("\'", "\"")),
+            defense=json.loads(row['defense'].replace("\'", "\""))
         )
         db.session.add(new_type)
         db.session.commit()

@@ -25,6 +25,19 @@ TRying
 </div>
 <script>
     $(document).ready(()=>{
+        for(i=1; i<7; i++){
+            let element = $(".select2-selector[id='poke"+ i +"']");
+            $.ajax({
+                url: "/api/pokemon/"+element.val(),
+                type: "GET",
+                success: function(data){
+                    $("#img-"+element[0].id).attr(
+                        'src',
+                        data['image']
+                    );
+                }  
+            })
+        }
 
         $('.select2-selector').on('change', function(e){
             e.preventDefault();
@@ -33,7 +46,6 @@ TRying
                 url: "/api/pokemon/"+$(this).val(),
                 type: "GET",
                 success: function(data){
-                    // console.log(getter_id);
                     $("#img-"+getter_id).attr(
                         'src',
                         data['image']
