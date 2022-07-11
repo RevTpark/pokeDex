@@ -154,3 +154,14 @@ mapping = {
     'Zapdos': 111,
     'Zubat': 4
 }
+
+points_mapping = {
+    "attack": 1,
+    "immune": 4,
+    "resistant": 2,
+    "defendable": 1,
+    "weak": -2,
+    "extremely_weak": -4,
+    "weak_defense": 1,
+    "extremely_weak_defense": 2
+}
