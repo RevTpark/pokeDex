@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from decouple import config
 from constants import pokemon_types
 import os
-from utils import algorithm, allowed_file, predict_pokemon, predict_text_pokemon
+from utils import algorithm, allowed_file, get_class, predict_pokemon, predict_text_pokemon
 from werkzeug.utils import secure_filename
 from flask_restful import Api
 
@@ -63,15 +63,16 @@ def guess_text_pokemon():
     return render_template("guess_text_pokemon.html")
 
 
-@app.route("/algorithm", methods=['GET', 'POST'])
-def algorithm_testing():
+@app.route("/team-strength", methods=['GET', 'POST'])
+def team_strength():
     form = AlgorithmForm()
-    placeholder = Pokemon.query.get(1)
+    message = None
     if form.validate_on_submit():
         data = form.data
         data.pop("csrf_token")
-        algorithm(data)
-    return render_template('test.html', form=form, placeholder=placeholder.image)
+        points = algorithm(data)
+        message = get_class(points)
+    return render_template('teams_strength.html', form=form, result=message)
 
 from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)

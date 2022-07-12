@@ -88,4 +88,25 @@ def algorithm(data):
     points = len(attack_set)*points_mapping['attack'] + len(defense_set[0.0])*points_mapping['immune'] + len(defense_set[0.25])*points_mapping['resistant'] \
             + len(defense_set[0.5])*points_mapping['defendable'] + len(defense_set[2.0])*points_mapping['weak'] + len(defense_set[4.0])*points_mapping['extremely_weak'] \
             + len(defense_set[2.0].intersection(attack_set))*points_mapping['weak_defense'] + len(defense_set[4.0].intersection(attack_set))*points_mapping['extremely_weak_defense']
-    print(points)
+
+    return points
+
+def get_class(points):
+    # x <= 0, Very Weak
+    # 1 < x <= 10, Weak
+    # 11 < x <= 20, Average
+    # 21 < x <= 30, Good
+    # 31 < x <= 40, Better
+    # x >= 41, Strong
+    if points <= 0:
+        return "Very Weak Type Combination Team"
+    elif 1 < points <= 10:
+        return "Weak Type Combination Team"
+    elif 11 < points <= 20:
+        return "Average Type Combination Team"
+    elif 21 < points <= 30:
+        return "Better than Average Type Combination Team"
+    elif 31 < points <= 40:
+        return "Close to a Strong Type Combination Team"
+    elif points >= 41:
+        return "A very Strong Type Combination Team"

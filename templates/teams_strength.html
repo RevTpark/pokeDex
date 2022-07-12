@@ -5,7 +5,15 @@ TRying
 {% endblock %}
 
 {% block content %}
+<div class="title-container">
+    <img src="https://fontmeme.com/permalink/220712/ebd2d9bfe8aa1d8135c6cfe383231290.png" alt="pokemon-font" border="0">
+</div>
 <div class="algo-backdrop">
+    {% if result %}
+    <div class="strength-message">
+        {{ result }}
+    </div>
+    {% endif %}
     <form method="POST" style="text-align: center;">
         {{form.hidden_tag()}}
         <div class="algo-form">
@@ -20,7 +28,7 @@ TRying
                 {% endif %}
             {% endfor %}
         </div>
-        <input type="submit" class="btn-submit">
+        <input type="submit" class="btn-submit" value="Get Ranked">
     </form>
 </div>
 <script>

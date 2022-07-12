@@ -252,6 +252,17 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+.strength-message{
+    border-radius: 30px;
+    background-color: rgba(218, 165, 32, 0.7);
+    border: 2px goldenrod solid;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
 .poke-card{
     display: flex;
     flex-direction: column;
