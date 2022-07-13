@@ -254,13 +254,41 @@ body{
 
 .strength-message{
     border-radius: 30px;
-    background-color: rgba(218, 165, 32, 0.7);
-    border: 2px goldenrod solid;
     padding: 10px;
     text-align: center;
     width: 50%;
     margin: auto;
     font-family: 'Poppins', sans-serif;
+}
+
+.s-tier{
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 2px red solid;
+}
+
+.a-tier{
+    background-color: rgba(255, 166, 0, 0.5);
+    border: 2px orange solid;
+}
+
+.b-tier{
+    background-color: rgba(255, 255, 0, 0.5);
+    border: 2px yellow solid;
+}
+
+.c-tier{
+    background-color: rgba(144, 238, 144, 0.8);
+    border: 2px green solid;
+}
+
+.d-tier{
+    background-color: rgba(70, 131, 180, 0.5);
+    border: 2px steelblue solid;
+}
+
+.f-tier{
+    background-color: rgba(238, 130, 238, 0.5);
+    border: 2px violet solid;
 }
 
 .poke-card{

@@ -99,14 +99,14 @@ def get_class(points):
     # 31 < x <= 40, Better
     # x >= 41, Strong
     if points <= 0:
-        return "Very Weak Type Combination Team"
+        return ("F Tier Type Combination Team", "f-tier")
     elif 1 < points <= 10:
-        return "Weak Type Combination Team"
+        return ("D Tier Type Combination Team", "d-tier")
     elif 11 < points <= 20:
-        return "Average Type Combination Team"
+        return ("C Tier Type Combination Team", "c-tier")
     elif 21 < points <= 30:
-        return "Better than Average Type Combination Team"
+        return ("B Tier Type Combination Team", "b-tier")
     elif 31 < points <= 40:
-        return "Close to a Strong Type Combination Team"
+        return ("A Tier Type Combination Team", "a-tier")
     elif points >= 41:
-        return "A very Strong Type Combination Team"
+        return ("S Tier Type Combination Team", "s-tier")
