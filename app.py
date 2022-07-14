@@ -78,13 +78,14 @@ from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
 app.cli.add_command(seed_pokemon_data)
 
-from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, PredictPokemonWithImage, SearchPokemonByName, SearchPokemonByType
+from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, GetTeamStrength, PredictPokemonWithImage, SearchPokemonByName, SearchPokemonByType
 api = Api(app, prefix="/api")
 api.add_resource(GetPokemonDetailsAPI, "/pokemon/<int:id>")
 api.add_resource(GetAllPokemonBasicAPI, "/pokemon/all")
 api.add_resource(SearchPokemonByName, "/search/<string:name>")
 api.add_resource(SearchPokemonByType, "/search")
 api.add_resource(PredictPokemonWithImage, "/predict")
+api.add_resource(GetTeamStrength, "/team-strength")
 
 if __name__ == "__main__":
     app.run()
