@@ -31,7 +31,7 @@ def init_db_command():
 @click.command('seed-data')
 @with_appcontext
 def seed_pokemon_data():
-    df = pd.read_csv("/static/data/pokebase.csv")
+    df = pd.read_csv("./static/data/pokebase2.csv")
     for idx, row in df.iterrows():
         poke = Pokemon(
             dex_id=row['dex_id'],
@@ -45,7 +45,7 @@ def seed_pokemon_data():
         db.session.add(poke)
         db.session.commit()
     
-    df = pd.read_csv('/static/data/typebase.csv')
+    df = pd.read_csv('./static/data/typebase.csv')
     for idx, row in df.iterrows():
         new_type = Types(
             name=row['name'],

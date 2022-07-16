@@ -3,7 +3,7 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 from models import Pokemon
 
 def get_pokemon():
-    return Pokemon.query.filter(Pokemon.dex_id < 152, Pokemon.image != "")
+    return Pokemon.query
 
 class AlgorithmForm(FlaskForm):
     for i in range(1, 7):
