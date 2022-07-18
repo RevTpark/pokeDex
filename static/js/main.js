@@ -57,6 +57,23 @@ function handleTypeSearch(){
     }
 }
 
+function handleGenSelector(){
+    val = document.getElementById('genSelector').value;
+    arr = val.split("-");
+    lower = parseInt(arr[0]);
+    upper = parseInt(arr[1]);
+    let list = document.getElementsByClassName('poke-card');
+    for(let i=0;i<list.length;i++){
+        let div_val = parseInt(list[i].getAttribute('value'));
+        if(lower <= div_val && div_val <= upper){
+            list[i].style.display = '';
+        }
+        else{
+            list[i].style.display = 'none';
+        }
+    }    
+}
+
 function showCameraSetup(){
     let element = document.getElementById('contentarea');
     if(element.style.display == 'none'){

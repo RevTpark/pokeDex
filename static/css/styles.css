@@ -198,7 +198,8 @@ body{
 .type-selector{
     padding: 5px;
     border: none;
-    background-color: lightseagreen;
+    background-color: rgba(32, 178, 171, 0.5);
+    border-radius: 20px;
     font-size: 15px;
     color: white;
 }
@@ -211,11 +212,27 @@ body{
 .search-field{
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
-    width: 70%;
+    width: 60%;
     background-color: rgba(135, 207, 235);
     border: none;
     border-radius: 25px;
     padding: 5px;
+}
+
+.search-field:focus{
+    outline: none;
+}
+
+.gen-selector{
+    padding: 5px;
+    border: 2px goldenrod solid;
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.gen-selector:focus{
+    outline: none;
 }
 
 .description-field{

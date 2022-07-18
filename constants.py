@@ -165,3 +165,13 @@ points_mapping = {
     "weak_defense": 1,
     "extremely_weak_defense": 2
 }
+
+generations = {
+    "Generation 1": "1-151",
+    "Generation 2": "152-251",
+    "Generation 3": "252-386",
+    "Generation 4": "387-493",
+    "Generation 5": "494-649",
+    "Generation 6": "650-721",
+    "Generation 7": "722-809"
+}

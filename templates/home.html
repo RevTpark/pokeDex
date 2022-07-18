@@ -19,11 +19,16 @@ PokeDex
                 <option value="{{ type1 }}">{{ type1 }}</option>
             {% endfor %}
         </select>
+        <select name="genSelector" id="genSelector" class="gen-selector" onchange="handleGenSelector()">
+            {% for gen in gens %}
+                <option value="{{ gens[gen] }}">{{ gen }}</option>
+            {% endfor %}
+        </select>
 </div>
 <div class="pokedex-container">
     {% for pokemon in data %}
     {% if pokemon.image %}
-        <div class="poke-card">
+        <div class="poke-card" value="{{ pokemon.dex_id }}">
             <div class="poke-image"><img src="{{ pokemon.image }}" alt="{{ pokemon.name }} Image"></div>
             <div class="poke-name">{{ pokemon.name }}</div>
             <div class="poke-type-container">
@@ -40,4 +45,9 @@ PokeDex
     {% endif %}
     {% endfor %}
 </div>
+<script>
+    $(document).ready(() => {
+            handleGenSelector();
+        })
+</script>
 {% endblock %}

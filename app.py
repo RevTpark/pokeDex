@@ -1,7 +1,7 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from decouple import config
-from constants import pokemon_types
+from constants import pokemon_types, generations
 import os
 from utils import algorithm, allowed_file, get_class, predict_pokemon, predict_text_pokemon
 from werkzeug.utils import secure_filename
@@ -18,8 +18,8 @@ from forms import AlgorithmForm
 
 @app.route("/")
 def home():
-    data = Pokemon.query.filter(Pokemon.dex_id < 152).all()
-    return render_template('home.html', data=data, types=pokemon_types)
+    data = Pokemon.query.filter(Pokemon.dex_id < 810).all()
+    return render_template('home.html', data=data, types=pokemon_types, gens=generations)
 
 @app.route("/types")
 def type_classification():
