@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_restful import Api
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = config("SQL_DATABASE_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = config("DATABASE_URL")
 app.config["SECRET_KEY"] = config("SECRET_KEY")
 app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
@@ -53,14 +53,14 @@ def guess_pokemon():
     return render_template("guess_pokemon.html")
 
 
-@app.route("/guess-text-pokemon", methods=["GET", "POST"])
-def guess_text_pokemon():
-    if request.method == "POST":
-        description = request.form['description']
-        output = predict_text_pokemon([description])
-        pokemon = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
-        return render_template("guess_text_pokemon.html", pokemon=pokemon)
-    return render_template("guess_text_pokemon.html")
+# @app.route("/guess-text-pokemon", methods=["GET", "POST"])
+# def guess_text_pokemon():
+#     if request.method == "POST":
+#         description = request.form['description']
+#         output = predict_text_pokemon([description])
+#         pokemon = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
+#         return render_template("guess_text_pokemon.html", pokemon=pokemon)
+#     return render_template("guess_text_pokemon.html")
 
 
 @app.route("/team-strength", methods=['GET', 'POST'])
@@ -87,5 +87,3 @@ api.add_resource(SearchPokemonByType, "/search")
 api.add_resource(PredictPokemonWithImage, "/predict")
 api.add_resource(GetTeamStrength, "/team-strength")
 
-if __name__ == "__main__":
-    app.run()
