@@ -93,26 +93,26 @@ class SearchPokemonByType(Resource):
         return res, 200
 
 
-class PredictPokemonWithImage(Resource):
+# class PredictPokemonWithImage(Resource):
 
-    def post(self):
-        from app import app
+#     def post(self):
+#         from app import app
 
-        file = request.files['image']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
-            output = predict_pokemon(file_path)
-            if os.path.exists(file_path):
-                os.remove(file_path)
-            poke = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
-            res = build_result(poke)
-            return res, 200
+#         file = request.files['image']
+#         if file and allowed_file(file.filename):
+#             filename = secure_filename(file.filename)
+#             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+#             file.save(file_path)
+#             output = predict_pokemon(file_path)
+#             if os.path.exists(file_path):
+#                 os.remove(file_path)
+#             poke = Pokemon.query.filter(Pokemon.name.ilike(f"%{output}%")).first()
+#             res = build_result(poke)
+#             return res, 200
             
-        return {
-            "error": "Wrong file type"
-        }, 400
+#         return {
+#             "error": "Wrong file type"
+#         }, 400
 
 
 class GetTeamStrength(Resource):
