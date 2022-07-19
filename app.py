@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_restful import Api
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = config("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = config("DATABASE_URI")
 app.config["SECRET_KEY"] = config("SECRET_KEY")
 app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
