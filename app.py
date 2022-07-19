@@ -6,6 +6,7 @@ import os
 from utils import algorithm, allowed_file, get_class, predict_pokemon, predict_text_pokemon
 from werkzeug.utils import secure_filename
 from flask_restful import Api
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = config("DATABASE_URI")
@@ -78,6 +79,7 @@ from models import init_db_command, seed_pokemon_data
 app.cli.add_command(init_db_command)
 app.cli.add_command(seed_pokemon_data)
 
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 from api import GetPokemonDetailsAPI, GetAllPokemonBasicAPI, GetTeamStrength, SearchPokemonByName, SearchPokemonByType
 api = Api(app, prefix="/api")
 api.add_resource(GetPokemonDetailsAPI, "/pokemon/<int:id>")
