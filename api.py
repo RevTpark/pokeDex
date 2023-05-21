@@ -3,6 +3,7 @@ from flask import request
 from models import Pokemon
 from schema import TypeQueryScehma
 from utils import algorithm, allowed_file, get_class, predict_pokemon
+from constants import generations
 from werkzeug.utils import secure_filename
 import os
 import json
@@ -128,3 +129,9 @@ class GetTeamStrength(Resource):
             "result": mssg[0],
             "class": mssg[1]
         }, 200
+
+
+class GetGenerationList(Resource):
+
+    def get(self):
+        return generations, 200
