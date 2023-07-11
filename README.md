@@ -1,4 +1,7 @@
 # PokeDex
+## Additional
+- [App](https://github.com/RevTpark/pokeDex-app)
+- [Scrapper and ML](https://github.com/RevTpark/pokeDex_Scrapper)
 ## Tech Stack
 - Jupyter Notebook
 - Flask/Python
